@@ -1,5 +1,5 @@
 const { App } = require('@slack/bolt');
-
+// import customRoutes from './customRoutes'
 /* 
 This sample slack application uses SocketMode
 For the companion getting started setup guide, 
@@ -12,6 +12,12 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   appToken: process.env.SLACK_APP_TOKEN,
 });
+
+// const app = new App({
+//   token: process.env.SLACK_BOT_TOKEN,
+//   socketMode: true,
+//   appToken: process.env.SLACK_APP_TOKEN
+// });
 
 // Listens to incoming messages that contain "hello"
 app.message('hello', async ({ message, say }) => {
@@ -31,6 +37,14 @@ app.message('hello', async ({ message, say }) => {
             "text": "Click Me"
           },
           "action_id": "button_click"
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Google Auth"
+          },
+          "action_id": "google_auth"
         }
       }
     ],
@@ -46,7 +60,7 @@ app.action('button_click', async ({ body, ack, say }) => {
 
 (async () => {
   // Start your app
-  await app.start(process.env.PORT || 5000);
+  await app.start(process.env.PORT || 8080);
   console.log(`⚡️ Slack Bolt app is running on port ${process.env.PORT }!`);
 
 })();
