@@ -58,11 +58,11 @@ app.action('button_click', async ({ body, ack, say }) => {
   await say(`<@${body.user.id}> clicked the button`);
 });
 
-app.action('auth-google-initiate', async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
-  await say(`<@${body.user.id}>Google auth initiated`);
-});
+// app.action('auth-google-initiate', async ({ body, ack, say }) => {
+//   // Acknowledge the action
+//   await ack();
+//   await say(`<@${body.user.id}>Google auth initiated`);
+// });
 
 (async () => {
   // Start your app
