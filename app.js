@@ -45,8 +45,11 @@ app.message('hello', async ({ message, say }) => {
           "type": "button",
           "text": {
             "type": "plain_text",
-            "text": "Google Auth"
+            "text": "Click Me",
+            "emoji": true
           },
+          "value": "click_me_123",
+          "url": "https://google.com",
           "action_id": "auth-google-initiate"
         }
       }
