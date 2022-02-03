@@ -44,7 +44,7 @@ app.message('hello', async ({ message, say }) => {
             "type": "plain_text",
             "text": "Google Auth"
           },
-          "action_id": "google_auth"
+          "action_id": "auth-google-initiate"
         }
       }
     ],
