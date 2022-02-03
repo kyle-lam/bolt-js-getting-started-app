@@ -5,6 +5,7 @@ This sample slack application uses SocketMode
 For the companion getting started setup guide, 
 see: https://slack.dev/bolt-js/tutorial/getting-started 
 */
+const { registerListeners } = require('./listeners');
 
 // Initializes your app with your bot token and app token
 const app = new App({
@@ -12,6 +13,8 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   appToken: process.env.SLACK_APP_TOKEN,
 });
+
+registerListeners(app);
 
 // const app = new App({
 //   token: process.env.SLACK_BOT_TOKEN,
