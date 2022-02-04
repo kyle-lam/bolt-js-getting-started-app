@@ -1,4 +1,4 @@
-const { App } = require('@slack/bolt');
+const { App, ExpressReceiver } = require('@slack/bolt');
 // import customRoutes from './customRoutes'
 /* 
 This sample slack application uses SocketMode
@@ -7,11 +7,26 @@ see: https://slack.dev/bolt-js/tutorial/getting-started
 */
 const { registerListeners } = require('./listeners');
 
+// const expressReceiver = new ExpressReceiver({
+//   signingSecret: process.env.SLACK_SIGNING_SECRET,
+//   endpoints: "/slack/events"
+// });
+
 // Initializes your app with your bot token and app token
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   appToken: process.env.SLACK_APP_TOKEN,
+  customRoutes: [
+    {
+      path: '/health-check',
+      method: ['GET'],
+      handler: (req, res) => {
+        res.writeHead(200);
+        res.end('Health check information displayed here!');
+      },
+    },
+  ],
 });
 
 registerListeners(app);
