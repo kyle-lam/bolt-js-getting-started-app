@@ -19,7 +19,7 @@ const app = new App({
   token: process.env.BOT_TOKEN,
   signingSecret:process.env.SLACK_SIGNING_SECRET,
   appToken: process.env.SLACK_APP_TOKEN,
-  socketMode: true,
+  socketMode: process.env.IS_DEV ? process.env.IS_DEV : false,
   customRoutes: [
     {
       path: '/health-check',
