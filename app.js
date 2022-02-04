@@ -22,7 +22,7 @@ const app = new App({
   signingSecret:process.env.SLACK_SIGNING_SECRET,
   token: process.env.SLACK_BOT_TOKEN,
   appToken: process.env.SLACK_APP_TOKEN,
-  socketMode: process.env.IS_DEV ? process.env.IS_DEV : false,
+  // socketMode: process.env.IS_DEV ? process.env.IS_DEV : false,
   customRoutes: [
     {
       path: '/health-check',
@@ -64,6 +64,7 @@ registerListeners(app);
 // Listens to incoming messages that contain "hello"
 app.message('hello', async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
+  console.log("hello received");
   await say({
     blocks: [
       {
@@ -99,7 +100,6 @@ app.action('button_click', async ({ body, ack, say }) => {
   // Start your app
   await app.start(process.env.PORT || 3000);
   console.log(`⚡️ Slack Bolt app is running on port ${process.env.PORT || 3000 }!`);
-  console.log('socket mode details : ' + JSON.stringify(app.PORT))
 })();
 
 // app.get('/auth/callback', auth.oauth_code_callback);
