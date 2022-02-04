@@ -92,11 +92,11 @@ app.action('button_click', async ({ body, ack, say }) => {
 
 })();
 
-app.get('/teams/:slack_team_id/users/:slack_user_id/login', auth.oauth_start_flow);
-app.get('/auth/callback', auth.oauth_code_callback);
+// app.get('/teams/:slack_team_id/users/:slack_user_id/login', auth.oauth_start_flow);
+// app.get('/auth/callback', auth.oauth_code_callback);
 
-app.post('/auth/callback', (err, res) => {
-	res.status(200);
-	res.send('working');
-	res.end();
-});
+// app.post('/auth/callback', (err, res) => {
+// 	res.status(200);
+// 	res.send('working');
+// 	res.end();
+// });
