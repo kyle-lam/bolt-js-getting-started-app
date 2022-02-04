@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { App, ExpressReceiver } = require('@slack/bolt');
 /* 
 This sample slack application uses SocketMode
@@ -15,9 +16,11 @@ const { registerListeners } = require('./listeners');
 
 // Initializes your app with your bot token and app token
 // process.env.SLACK_SIGNING_SECRET
+
+console.log('signing secret : ' + process.env.SLACK_SIGNING_SECRET)
 const app = new App({
-  token: process.env.BOT_TOKEN,
   signingSecret:process.env.SLACK_SIGNING_SECRET,
+  token: process.env.SLACK_BOT_TOKEN,
   appToken: process.env.SLACK_APP_TOKEN,
   socketMode: process.env.IS_DEV ? process.env.IS_DEV : false,
   customRoutes: [
