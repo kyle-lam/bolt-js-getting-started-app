@@ -16,9 +16,10 @@ const { registerListeners } = require('./listeners');
 // Initializes your app with your bot token and app token
 // process.env.SLACK_SIGNING_SECRET
 const app = new App({
-  token: 'xoxb-2996799963989-3028172472469-zPBVJotv2whx3ZrgF4t13sWi',
-  signingSecret:'f27b1aa9dde4c34cc525c3f881354c83',
-  appToken: 'xapp-1-A030U513T37-3033762715479-96b3a30e1900e0c2d8d87f2ba3b997387318519b3ced8125bc11957377b8abdd',
+  token: process.env.BOT_TOKEN,
+  signingSecret:process.env.SLACK_SIGNING_SECRET,
+  appToken: process.env.SLACK_APP_TOKEN,
+  socketMode: true,
   customRoutes: [
     {
       path: '/health-check',
